@@ -26,9 +26,7 @@ pub struct SymbolExpr {
 	value string
 }
 
-pub fn (ne SymbolExpr) expr() {
-
-}
+pub fn (ne SymbolExpr) expr() { }
 
 // COMPLEX
 pub struct BinaryExpr {
@@ -38,8 +36,7 @@ pub struct BinaryExpr {
 	right    Expr
 }
 
-pub fn (ne BinaryExpr) expr() {
-}
+pub fn (ne BinaryExpr) expr() { }
 
 pub struct PrefixExpr {
 	pub:
@@ -47,8 +44,7 @@ pub struct PrefixExpr {
 	value    Expr
 }
 
-pub fn (pe PrefixExpr) expr() {
-}
+pub fn (pe PrefixExpr) expr() { }
 
 pub struct AssignmentEpxr {
 	pub:
@@ -57,5 +53,4 @@ pub struct AssignmentEpxr {
 	value    Expr
 }
 
-pub fn (pe AssignmentEpxr) expr() {
-}
+pub fn (pe AssignmentEpxr) expr() { }

@@ -2,30 +2,24 @@ module ast
 
 pub struct BlockStmt {
 	pub:
-		body []Stmt
+	body []Stmt
 }
 
-pub fn (bs BlockStmt) stmt() {
-
-}
+pub fn (bs BlockStmt) stmt() { }
 
 pub struct ExpressionStmt {
 	pub:
-		expression Expr
+	expression Expr
 }
 
-pub fn (bs ExpressionStmt) stmt() {
-
-}
+pub fn (bs ExpressionStmt) stmt() { }
 
 pub struct VarDeclStmt {
 	pub:
-		variable_name string
-		is_constant   bool
-		assiged_value Expr
-		//explicit_type      Type
+	variable_name string
+	is_constant   bool
+	assiged_value Expr
+	//explicit_type      Type
 }
 
-pub fn (bs VarDeclStmt) stmt() {
-
-}
+pub fn (bs VarDeclStmt) stmt() { }

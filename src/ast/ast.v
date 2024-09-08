@@ -7,3 +7,7 @@ pub interface Stmt {
 pub interface Expr {
 	expr()
 }
+
+pub interface Type {
+	_type()
+}
