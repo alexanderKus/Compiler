@@ -54,3 +54,10 @@ pub fn parse_assignment_expr(mut p Parser, left ast.Expr, bp BandingPower) ast.E
 	if debug_flag >= 3 { println('AssignmentExpr: left: ${left}, operator: ${operator}, right: ${right}') }
 	return ast.AssignmentEpxr{ assignee: left operator: operator value: right }
 }
+
+pub fn parse_grouping_expr(mut p Parser) ast.Expr {
+	p.advance()
+	expr := parse_expr(mut p, BandingPower.default_bp)
+	p.expect(lexer.TokenKind.right_paren_kind)
+	return expr
+}
