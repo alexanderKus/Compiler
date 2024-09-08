@@ -38,8 +38,7 @@ pub fn led(kind lexer.TokenKind, bp BandingPower, func LedHandler) {
 	led_lu[kind] = func
 }
 
-pub fn nud(kind lexer.TokenKind, bp BandingPower, func NudHandler) {
-	bp_lu[kind] = bp
+pub fn nud(kind lexer.TokenKind, func NudHandler) {
 	nud_lu[kind] = func
 }
 
@@ -66,9 +65,9 @@ pub fn create_token_lookups() {
 	led(lexer.TokenKind.devide_kind, BandingPower.mulitipliative, parse_binary_expr)
 	led(lexer.TokenKind.procent_kind, BandingPower.mulitipliative, parse_binary_expr)
 
-	nud(lexer.TokenKind.number_kind, BandingPower.primary, parse_primary_expr)
-	nud(lexer.TokenKind.string_kind, BandingPower.primary, parse_primary_expr)
-	nud(lexer.TokenKind.identifier_kind, BandingPower.primary, parse_primary_expr)
+	nud(lexer.TokenKind.number_kind, parse_primary_expr)
+	nud(lexer.TokenKind.string_kind, parse_primary_expr)
+	nud(lexer.TokenKind.identifier_kind, parse_primary_expr)
 
 
 	stmt(lexer.TokenKind.int_kind, parse_var_decl_stmt)
