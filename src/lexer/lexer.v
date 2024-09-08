@@ -32,6 +32,7 @@ pub fn create_lexer(path string) !Lexer {
 			TokenPattern{ regex.regex_opt(r'>=')!, TokenKind.greater_or_equals_kind },
 			TokenPattern{ regex.regex_opt(r'<')!, TokenKind.less_than_kind },
 			TokenPattern{ regex.regex_opt(r'>')!, TokenKind.greater_than_kind },
+			TokenPattern{ regex.regex_opt(r'=')!, TokenKind.assignment_kind },
 			TokenPattern{ regex.regex_opt(r'\(')!, TokenKind.left_paren_kind },
 			TokenPattern{ regex.regex_opt(r'\)')!, TokenKind.right_paren_kind },
 			TokenPattern{ regex.regex_opt(r'\{')!, TokenKind.left_bracket_kind },
@@ -87,6 +88,7 @@ pub fn (mut l Lexer) tokenize() []Token{
 				else if tp.kind == TokenKind.greater_than_kind { t = create_token(tp.kind, '>') }
 				else if tp.kind == TokenKind.less_or_equals_kind { t = create_token(tp.kind, '<=') }
 				else if tp.kind == TokenKind.greater_or_equals_kind { t = create_token(tp.kind, '>=') }
+				else if tp.kind == TokenKind.assignment_kind { t = create_token(tp.kind, '=') }
 				else if tp.kind == TokenKind.semi_colon_kind { t = create_token(tp.kind, ';') }
 				else if tp.kind == TokenKind.plus_kind { t = create_token(tp.kind, '+') }
 				else if tp.kind == TokenKind.minus_kind { t = create_token(tp.kind, '-') }
@@ -97,7 +99,7 @@ pub fn (mut l Lexer) tokenize() []Token{
 				else if tp.kind == TokenKind.or_kind { t = create_token(tp.kind, '||') }
 				else if tp.kind == TokenKind.not_kind { t = create_token(tp.kind, '!') }
 				else { panic('ERROR: MISSING TOKEN TYPE IN IF STATEMENTS. KIND: ${tp.kind}') }
-				if debug_flag >= 3 { println('DEBUG: s: ${s}, e: ${e}, kind: ${tp.kind}, value: `${l.remainder()[s..e]}`') }
+				if debug_flag >= 3 { println('DEBUG: s: ${s}, e: ${e}, kind: ${t.kind}, value: `${l.remainder()[s..e]}`') }
 				l.tokens << t
 				l.advance(e)
 				break

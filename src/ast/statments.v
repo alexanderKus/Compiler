@@ -17,3 +17,15 @@ pub struct ExpressionStmt {
 pub fn (bs ExpressionStmt) stmt() {
 
 }
+
+pub struct VarDeclStmt {
+	pub:
+		variable_name string
+		is_constant   bool
+		assiged_value Expr
+		//explicit_type      Type
+}
+
+pub fn (bs VarDeclStmt) stmt() {
+
+}

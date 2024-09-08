@@ -69,4 +69,8 @@ pub fn create_token_lookups() {
 	nud(lexer.TokenKind.number_kind, BandingPower.primary, parse_primary_expr)
 	nud(lexer.TokenKind.string_kind, BandingPower.primary, parse_primary_expr)
 	nud(lexer.TokenKind.identifier_kind, BandingPower.primary, parse_primary_expr)
+
+
+	stmt(lexer.TokenKind.int_kind, parse_var_decl_stmt)
+	stmt(lexer.TokenKind.bool_kind, parse_var_decl_stmt)
 }

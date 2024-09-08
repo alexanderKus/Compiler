@@ -12,6 +12,7 @@ pub enum TokenKind {
 
 	int_kind
 	string_kind
+	bool_kind
 	void_kind
 	return_kind
 	true_kind
@@ -27,6 +28,7 @@ pub enum TokenKind {
 	greater_than_kind
 	less_or_equals_kind
 	greater_or_equals_kind
+	assignment_kind
 	semi_colon_kind
 	plus_kind
 	minus_kind
@@ -67,6 +69,7 @@ pub fn (t Token) str() string {
 pub fn init_reserved_token_kind_lu() {
 	reserved_token_kind_lu = {
 		'int'    : TokenKind.int_kind
+		'bool'   : TokenKind.bool_kind
 		'string' : TokenKind.string_kind
 		'void'   : TokenKind.void_kind
 		'return' : TokenKind.return_kind
