@@ -12,7 +12,6 @@ pub fn parse_expr(mut p Parser, bp BandingPower) ast.Expr {
 	for int(bp_lu[p.current_token_kind()]) > int(bp) {
 		tp = p.current_token_kind()
 		led_fn := led_lu[tp] or { panic('ERROR: CANNOT GET LED FUNC FOR TOKEN KIND: ${tp}, VALUE: ${p.current_token().value}') }
-		// NOTE: in video was: left = led_fn(mut p, left, bp)
 		left = led_fn(mut p, left, bp_lu[tp])
 	}
 
