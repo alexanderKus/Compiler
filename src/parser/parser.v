@@ -2,6 +2,8 @@ module parser
 
 import lexer
 import ast
+import os
+import json
 
 struct Parser {
 	tokens []lexer.Token
@@ -44,11 +46,17 @@ pub fn parse(tokens []lexer.Token) ast.BlockStmt {
 	create_token_lookups()
 	mut p := create_parser(tokens)
 	mut body := []ast.Stmt{}
+	debug_flag := os.getenv('DEBUG').int()
+	dump_ast_flag := os.getenv('DSF').int()
+
+	if debug_flag >= 1 { println('DEBUG: Parser start')}
 
 	for p.has_token() {
 		body << parse_stmt(mut p)
 	}
 
+	if debug_flag >= 1 { println('DEBUG: Parser end')}
+	if dump_ast_flag > 0 { json.encode(p) }
 	return ast.BlockStmt{
 		body: body
 	}	
