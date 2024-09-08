@@ -24,6 +24,8 @@ pub enum TokenKind {
 	right_bracket_kind
 	equals_kind
 	not_equals_kind
+	plus_equals_kind
+	minus_equals_kind
 	less_than_kind
 	greater_than_kind
 	less_or_equals_kind

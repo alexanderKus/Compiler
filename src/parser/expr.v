@@ -35,6 +35,22 @@ pub fn parse_binary_expr(mut p Parser, left ast.Expr, bp BandingPower) ast.Expr 
 	right := parse_expr(mut p, bp_lu[operator.kind])
 	debug_flag := os.getenv('DEBUG').int()
 	if debug_flag >= 3 { println('BinaryExpr: left: ${left}, operator: ${operator}, right: ${right}') }
-
 	return ast.BinaryExpr{ left: left, operator: operator, right: right }
+}
+
+pub fn parse_prefix_expr(mut p Parser) ast.Expr {
+	operator := p.advance()
+	// NOTE: in video was: value := parse_expr(mut p, lexer.TokenKind.default_kind)
+	value := parse_expr(mut p, bp_lu[operator.kind])
+	debug_flag := os.getenv('DEBUG').int()
+	if debug_flag >= 3 { println('PrefixExpr: operator: ${operator}, value: ${value}') }
+	return ast.PrefixExpr{ operator: operator value: value }
+}
+
+pub fn parse_assignment_expr(mut p Parser, left ast.Expr, bp BandingPower) ast.Expr {
+	operator := p.advance()
+	right := parse_expr(mut p, bp)
+	debug_flag := os.getenv('DEBUG').int()
+	if debug_flag >= 3 { println('AssignmentExpr: left: ${left}, operator: ${operator}, right: ${right}') }
+	return ast.AssignmentEpxr{ assignee: left operator: operator value: right }
 }

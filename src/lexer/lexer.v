@@ -30,6 +30,8 @@ pub fn create_lexer(path string) !Lexer {
 			TokenPattern{ regex.regex_opt(r'==')!, TokenKind.equals_kind },
 			TokenPattern{ regex.regex_opt(r'<=')!, TokenKind.less_or_equals_kind },
 			TokenPattern{ regex.regex_opt(r'>=')!, TokenKind.greater_or_equals_kind },
+			TokenPattern{ regex.regex_opt(r'+=')!, TokenKind.plus_equals_kind },
+			TokenPattern{ regex.regex_opt(r'-=')!, TokenKind.minus_equals_kind },
 			TokenPattern{ regex.regex_opt(r'<')!, TokenKind.less_than_kind },
 			TokenPattern{ regex.regex_opt(r'>')!, TokenKind.greater_than_kind },
 			TokenPattern{ regex.regex_opt(r'=')!, TokenKind.assignment_kind },
@@ -88,6 +90,8 @@ pub fn (mut l Lexer) tokenize() []Token{
 				else if tp.kind == TokenKind.greater_than_kind { t = create_token(tp.kind, '>') }
 				else if tp.kind == TokenKind.less_or_equals_kind { t = create_token(tp.kind, '<=') }
 				else if tp.kind == TokenKind.greater_or_equals_kind { t = create_token(tp.kind, '>=') }
+				else if tp.kind == TokenKind.plus_equals_kind { t = create_token(tp.kind, '+=') }
+				else if tp.kind == TokenKind.minus_equals_kind { t = create_token(tp.kind, '-=') }
 				else if tp.kind == TokenKind.assignment_kind { t = create_token(tp.kind, '=') }
 				else if tp.kind == TokenKind.semi_colon_kind { t = create_token(tp.kind, ';') }
 				else if tp.kind == TokenKind.plus_kind { t = create_token(tp.kind, '+') }

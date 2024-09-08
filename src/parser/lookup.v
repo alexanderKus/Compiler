@@ -48,6 +48,10 @@ pub fn stmt(kind lexer.TokenKind, func StmtHandler) {
 }
 
 pub fn create_token_lookups() {
+	led(lexer.TokenKind.assignment_kind, BandingPower.assignment, parse_assignment_expr)
+	led(lexer.TokenKind.plus_equals_kind, BandingPower.assignment, parse_assignment_expr)
+	led(lexer.TokenKind.minus_equals_kind, BandingPower.assignment, parse_assignment_expr)
+
 	led(lexer.TokenKind.and_kind, BandingPower.logical, parse_binary_expr)
 	led(lexer.TokenKind.or_kind, BandingPower.logical, parse_binary_expr)
 
@@ -68,7 +72,7 @@ pub fn create_token_lookups() {
 	nud(lexer.TokenKind.number_kind, parse_primary_expr)
 	nud(lexer.TokenKind.string_kind, parse_primary_expr)
 	nud(lexer.TokenKind.identifier_kind, parse_primary_expr)
-
+	nud(lexer.TokenKind.minus_kind, parse_prefix_expr)
 
 	stmt(lexer.TokenKind.int_kind, parse_var_decl_stmt)
 	stmt(lexer.TokenKind.bool_kind, parse_var_decl_stmt)

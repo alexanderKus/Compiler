@@ -40,3 +40,22 @@ pub struct BinaryExpr {
 
 pub fn (ne BinaryExpr) expr() {
 }
+
+pub struct PrefixExpr {
+	pub:
+	operator lexer.Token
+	value    Expr
+}
+
+pub fn (pe PrefixExpr) expr() {
+}
+
+pub struct AssignmentEpxr {
+	pub:
+	assignee Expr
+	operator lexer.Token
+	value    Expr
+}
+
+pub fn (pe AssignmentEpxr) expr() {
+}
