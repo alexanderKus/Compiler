@@ -53,8 +53,8 @@ pub struct TokenPattern {
 		kind TokenKind
 }
 
-pub fn create_token(kind TokenKind, value string) &Token {
-	return &Token{
+pub fn create_token(kind TokenKind, value string) Token {
+	return Token{
 		kind:  kind,
 		value: value
 	}

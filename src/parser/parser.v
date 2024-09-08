@@ -9,8 +9,8 @@ mut:
 	pos    int
 }
 
-fn create_parser(tokens []lexer.Token) &Parser{
-	return &Parser{
+fn create_parser(tokens []lexer.Token) Parser{
+	return Parser{
 		tokens: tokens,
 		pos: 0
 	}
@@ -40,7 +40,7 @@ fn (mut p Parser) expect(kind lexer.TokenKind) lexer.Token {
 	return p.advance()
 }
 
-pub fn parse(tokens []lexer.Token) &ast.BlockStmt {
+pub fn parse(tokens []lexer.Token) ast.BlockStmt {
 	create_token_lookups()
 	mut p := create_parser(tokens)
 	mut body := []ast.Stmt{}
@@ -49,7 +49,7 @@ pub fn parse(tokens []lexer.Token) &ast.BlockStmt {
 		body << parse_stmt(mut p)
 	}
 
-	return &ast.BlockStmt{
+	return ast.BlockStmt{
 		body: body
 	}	
 }

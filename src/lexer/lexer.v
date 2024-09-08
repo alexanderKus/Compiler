@@ -12,13 +12,13 @@ mut:
 	pos             int
 }
  
-pub fn create_lexer(path string) !&Lexer {
+pub fn create_lexer(path string) !Lexer {
 	source := os.read_file(path) or {
     panic('ERROR: cannot read file at paht: ${path}')
   }
 
 	init_reserved_token_kind_lu()
-	return &Lexer{
+	return Lexer{
 		source: source
 		pos: 0
 		tokens: []
@@ -71,7 +71,7 @@ pub fn (mut l Lexer) tokenize() []Token{
 			s, e := tp.reg.match_string(l.remainder())
 			if s > -1 {
 				is_matched = true
-				mut t := &Token{}
+				mut t := Token{}
 				if tp.kind ==  TokenKind.white_space_kind { l.advance(e) break }
 				else if tp.kind == TokenKind.eof_kind { break } // NOTE: maybe need to create a OEF token
 				else if tp.kind == TokenKind.string_kind { t = create_token(tp.kind, l.remainder()[s..e]) }
@@ -113,14 +113,14 @@ pub fn (mut l Lexer) tokenize() []Token{
 	return l.tokens.clone()
 }
 
-fn handle(kind TokenKind, value string) &Token {
+fn handle(kind TokenKind, value string) Token {
 	if reserved_kind := reserved_token_kind_lu[value] {
-		return &Token{
+		return Token{
 			kind: reserved_kind,
 			value: value
 		}
 	}
-	return &Token{
+	return Token{
 		kind: kind,
 		value: value
 	}
