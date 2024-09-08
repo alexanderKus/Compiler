@@ -8,13 +8,11 @@ pub fn parse_expr(mut p Parser, bp BandingPower) ast.Expr {
 	mut tp := p.current_token_kind()
 	nud_fn := nud_lu[tp] or { panic('ERROR: CANNOT GET NUD FUNC FOR TOKEN KIND: ${tp}, VALUE: ${p.current_token().value}') }
 	mut left := nud_fn(mut p)
-
 	for int(bp_lu[p.current_token_kind()]) > int(bp) {
 		tp = p.current_token_kind()
 		led_fn := led_lu[tp] or { panic('ERROR: CANNOT GET LED FUNC FOR TOKEN KIND: ${tp}, VALUE: ${p.current_token().value}') }
 		left = led_fn(mut p, left, bp_lu[tp])
 	}
-
 	return left
 }
 

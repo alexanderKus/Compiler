@@ -44,6 +44,7 @@ fn (mut p Parser) expect(kind lexer.TokenKind) lexer.Token {
 
 pub fn parse(tokens []lexer.Token) ast.BlockStmt {
 	create_token_lookups()
+	create_token_types_lookups()
 	mut p := create_parser(tokens)
 	mut body := []ast.Stmt{}
 	debug_flag := os.getenv('DEBUG').int()

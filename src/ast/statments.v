@@ -19,7 +19,7 @@ pub struct VarDeclStmt {
 	variable_name string
 	is_constant   bool
 	assiged_value Expr
-	//explicit_type      Type
+	explicit_type ?Type
 }
 
 pub fn (bs VarDeclStmt) stmt() { }

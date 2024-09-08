@@ -77,6 +77,6 @@ pub fn create_token_lookups() {
 
 	nud(lexer.TokenKind.minus_kind, parse_prefix_expr)
 
-	stmt(lexer.TokenKind.int_kind, parse_var_decl_stmt)
-	stmt(lexer.TokenKind.bool_kind, parse_var_decl_stmt)
+	stmt(lexer.TokenKind.let_kind, parse_var_decl_stmt)
+	stmt(lexer.TokenKind.const_kind, parse_var_decl_stmt)
 }

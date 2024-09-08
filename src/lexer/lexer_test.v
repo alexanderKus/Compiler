@@ -14,7 +14,7 @@ fn test_init_reserved_token_kind_lu() {
 }
 
 fn test_tokenzier() {
-	data := '[{"kind":"int_kind","value":"int"},{"kind":"identifier_kind","value":"main"},{"kind":"left_paren_kind","value":"{"},{"kind":"void_kind","value":"void"},{"kind":"right_paren_kind","value":")"},{"kind":"left_bracket_kind","value":"{"},{"kind":"return_kind","value":"return"},{"kind":"number_kind","value":"69"},{"kind":"semi_colon_kind","value":";"},{"kind":"right_bracket_kind","value":"}"}]'
+	data := '[{"kind":"identifier_kind","value":"int"},{"kind":"identifier_kind","value":"main"},{"kind":"left_paren_kind","value":"{"},{"kind":"identifier_kind","value":"void"},{"kind":"right_paren_kind","value":")"},{"kind":"left_bracket_kind","value":"{"},{"kind":"identifier_kind","value":"return"},{"kind":"number_kind","value":"69"},{"kind":"semi_colon_kind","value":";"},{"kind":"right_bracket_kind","value":"}"}]'
 	tokens := json.decode([]Token, data)!
 
 	path := 'examples/example1.c'
@@ -50,7 +50,7 @@ fn test_tokenzier_3() {
 }
 
 fn test_tokenzier_4() {
-	data := '[{"kind":"int_kind","value":"int"},{"kind":"identifier_kind","value":"a"},{"kind":"assignment_kind","value":"="},{"kind":"number_kind","value":"5"},{"kind":"semi_colon_kind","value":";"},{"kind":"int_kind","value":"int"},{"kind":"identifier_kind","value":"b"},{"kind":"assignment_kind","value":"="},{"kind":"identifier_kind","value":"a"},{"kind":"multiply_kind","value":"*"},{"kind":"number_kind","value":"10"},{"kind":"semi_colon_kind","value":";"},{"kind":"bool_kind","value":"bool"},{"kind":"identifier_kind","value":"is_foo"},{"kind":"assignment_kind","value":"="},{"kind":"identifier_kind","value":"a"},{"kind":"greater_than_kind","value":">"},{"kind":"identifier_kind","value":"b"},{"kind":"semi_colon_kind","value":";"}]'
+	data := '[{"kind":"let_kind","value":"let"},{"kind":"identifier_kind","value":"a"},{"kind":"assignment_kind","value":"="},{"kind":"number_kind","value":"5"},{"kind":"semi_colon_kind","value":";"},{"kind":"let_kind","value":"let"},{"kind":"identifier_kind","value":"b"},{"kind":"assignment_kind","value":"="},{"kind":"identifier_kind","value":"a"},{"kind":"multiply_kind","value":"*"},{"kind":"number_kind","value":"10"},{"kind":"semi_colon_kind","value":";"},{"kind":"let_kind","value":"let"},{"kind":"identifier_kind","value":"is_foo"},{"kind":"assignment_kind","value":"="},{"kind":"identifier_kind","value":"a"},{"kind":"greater_than_kind","value":">"},{"kind":"identifier_kind","value":"b"},{"kind":"semi_colon_kind","value":";"}]'
 	tokens := json.decode([]Token, data)!
 
 	path := 'examples/example4.c'

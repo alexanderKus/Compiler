@@ -10,11 +10,9 @@ pub enum TokenKind {
 	eof_kind
 	white_space_kind
 
-	int_kind
+	let_kind
+	const_kind
 	string_kind
-	bool_kind
-	void_kind
-	return_kind
 	true_kind
 	false_kind
 
@@ -22,6 +20,8 @@ pub enum TokenKind {
 	right_paren_kind
 	left_bracket_kind
 	right_bracket_kind
+	left_square_bracket_kind
+	right_square_bracket_kind
 	equals_kind
 	not_equals_kind
 	plus_equals_kind
@@ -32,6 +32,7 @@ pub enum TokenKind {
 	greater_or_equals_kind
 	assignment_kind
 	semi_colon_kind
+	colon_kind
 	plus_kind
 	minus_kind
 	multiply_kind
@@ -70,11 +71,8 @@ pub fn (t Token) str() string {
 
 pub fn init_reserved_token_kind_lu() {
 	reserved_token_kind_lu = {
-		'int'    : TokenKind.int_kind
-		'bool'   : TokenKind.bool_kind
-		'string' : TokenKind.string_kind
-		'void'   : TokenKind.void_kind
-		'return' : TokenKind.return_kind
+		'let'    : TokenKind.let_kind
+		'const'  : TokenKind.const_kind
 		'true'   : TokenKind.true_kind
 		'false'  : TokenKind.false_kind
 	}

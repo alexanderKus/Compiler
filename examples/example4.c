@@ -1,3 +1,3 @@
-int a = 5;
-int b = a * 10;
-bool is_foo = a > b;
+let a = 5;
+let b = a * 10;
+let is_foo = a > b;

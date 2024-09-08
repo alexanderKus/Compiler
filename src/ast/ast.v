@@ -9,5 +9,5 @@ pub interface Expr {
 }
 
 pub interface Type {
-	_type()
+	type_()
 }
