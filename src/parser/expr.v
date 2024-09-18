@@ -59,3 +59,7 @@ pub fn parse_grouping_expr(mut p Parser) ast.Expr {
 	p.expect(lexer.TokenKind.right_paren_kind)
 	return expr
 }
+
+pub fn parse_struct_instantiation_expr(mut p Parser, left ast.Expr, bp BandingPower) ast.Expr {
+	return ast.StructInstantiationExpr{}	
+}

@@ -33,6 +33,7 @@ pub enum TokenKind {
 	assignment_kind
 	semi_colon_kind
 	colon_kind
+	comma_kind
 	plus_kind
 	minus_kind
 	multiply_kind
@@ -44,6 +45,7 @@ pub enum TokenKind {
 
 	identifier_kind
 	number_kind
+	struct_kind
 }
 
 pub struct Token {
@@ -75,5 +77,6 @@ pub fn init_reserved_token_kind_lu() {
 		'const'  : TokenKind.const_kind
 		'true'   : TokenKind.true_kind
 		'false'  : TokenKind.false_kind
+		'struct' : TokenKind.struct_kind
 	}
 }

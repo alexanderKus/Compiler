@@ -43,6 +43,7 @@ pub fn create_lexer(path string) !Lexer {
 			TokenPattern{ regex.regex_opt(r'\]')!, TokenKind.right_square_bracket_kind },
 			TokenPattern{ regex.regex_opt(r';')!, TokenKind.semi_colon_kind },
 			TokenPattern{ regex.regex_opt(r':')!, TokenKind.colon_kind },
+			TokenPattern{ regex.regex_opt(r',')!, TokenKind.comma_kind },
 			TokenPattern{ regex.regex_opt(r'\+')!, TokenKind.plus_kind },
 			TokenPattern{ regex.regex_opt(r'\-')!, TokenKind.minus_kind },
 			TokenPattern{ regex.regex_opt(r'\*')!, TokenKind.multiply_kind },
@@ -100,6 +101,7 @@ pub fn (mut l Lexer) tokenize() []Token{
 				else if tp.kind == TokenKind.assignment_kind { t = create_token(tp.kind, '=') }
 				else if tp.kind == TokenKind.semi_colon_kind { t = create_token(tp.kind, ';') }
 				else if tp.kind == TokenKind.colon_kind { t = create_token(tp.kind, ':') }
+				else if tp.kind == TokenKind.comma_kind { t = create_token(tp.kind, ',') }
 				else if tp.kind == TokenKind.plus_kind { t = create_token(tp.kind, '+') }
 				else if tp.kind == TokenKind.minus_kind { t = create_token(tp.kind, '-') }
 				else if tp.kind == TokenKind.multiply_kind { t = create_token(tp.kind, '*') }

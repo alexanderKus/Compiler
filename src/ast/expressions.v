@@ -54,3 +54,11 @@ pub struct AssignmentEpxr {
 }
 
 pub fn (pe AssignmentEpxr) expr() { }
+
+pub struct StructInstantiationExpr {
+	pub:
+	struct_name string
+	properties  map[string]Expr
+}
+
+pub fn (pe StructInstantiationExpr) expr() { }

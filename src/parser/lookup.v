@@ -79,4 +79,5 @@ pub fn create_token_lookups() {
 
 	stmt(lexer.TokenKind.let_kind, parse_var_decl_stmt)
 	stmt(lexer.TokenKind.const_kind, parse_var_decl_stmt)
+	stmt(lexer.TokenKind.struct_kind, parse_struct_decl_stmt)
 }
